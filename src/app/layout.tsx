@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { CONTAINER_MAX_WIDTH, EACH_SECTION_PADDING } from "@/constants";
+import HeroSection from "@/components/home/Hero";
 
 const InterFont = Inter({
   variable: "--font-inter",
@@ -35,11 +36,12 @@ export default function RootLayout({
         `}
       >
         <Header></Header>
+        {/* <HeroSection></HeroSection> */}
         <main
           className="flex-grow mx-auto w-full"
           style={{
-            maxWidth: CONTAINER_MAX_WIDTH,
-           paddingBlock: EACH_SECTION_PADDING,
+            // maxWidth: CONTAINER_MAX_WIDTH,
+            paddingBottom: EACH_SECTION_PADDING,
           }}
         >
           {children}

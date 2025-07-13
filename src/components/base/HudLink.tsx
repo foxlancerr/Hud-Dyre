@@ -7,16 +7,18 @@ interface HudLinkProps {
   children: React.ReactNode;
   target?: "_blank" | "_self";
   as?: "a" | "link";
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "normal";
   className?: string;
   fontFamily?: "Inter" | "Grotesk";
   underline?: boolean;
+  display?: "inline" | "flex" | "block" | "inline-flex";
 }
 
 const sizeMap = {
   sm: "text-[15px] leading-[15px]",
-  md: "text-[16px] leading-[24px]",
-  lg: "text-[18px] leading-[28px]",
+  normal: "text-[20px] leading-[24px]",
+  md: "text-[24px] leading-[28px]",
+  lg: "text-[28px] leading-[32px]",
 };
 
 const fontFamilyMap = {
@@ -33,11 +35,13 @@ function HudLink({
   fontFamily = "Inter",
   className,
   underline = false,
+  display = "block",
 }: HudLinkProps) {
   const classes = clsx(
     fontFamilyMap[fontFamily],
     sizeMap[size],
-    `text-black block ${underline ? "underline" : ""}`,
+    display,
+    `text-black ${underline ? "underline" : ""}`,
     className
   );
 

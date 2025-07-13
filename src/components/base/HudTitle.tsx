@@ -10,11 +10,11 @@ interface IHudTitleProps {
 }
 
 const sizeMap = {
-  sm: "text-[20px] leading-[20px]",
+  sm: "text-[20px] leading-[24px]",
   normal: "text-[24px] leading-[30px]",
   md: "text-[65px] leading-[75px]",
   bold: "text-[70px] leading-[80px]",
-  lg: "text-[80px] leading-[90px]",
+  lg: "text-[90px] leading-[94px]",
 };
 
 const fontFamilyType: Record<

@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import { Input } from "../ui/input";
 
-interface HubInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface HudInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   size?: "sm" | "md" | "lg";
   rounded?: "sm" | "md" | "lg" | "full" | "none";
@@ -23,13 +23,13 @@ const radiusMap = {
   full: "rounded-full",
 };
 
-function HubInput({
+function HudInput({
   className,
   size = "md",
   rounded = "none",
   isBorder = false,
   ...props
-}: HubInputProps) {
+}: HudInputProps) {
   const classes = clsx(
     "flex w-full focus:outline-none shadow-none border-none outline-none",
     sizeMap[size],
@@ -41,4 +41,4 @@ function HubInput({
   return <Input className={classes} {...props} />;
 }
 
-export default HubInput;
+export default HudInput;

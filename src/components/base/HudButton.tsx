@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import clsx from "clsx";
 
-interface IHubButtonProps {
+interface IHudButtonProps {
   as?: "button" | "link";
   href?: string;
   rounded?: "none" | "sm" | "md" | "lg" | "xl" | "full";
@@ -26,7 +26,7 @@ const fontFamilyType = {
   Grotesk: "font-grotesk",
 };
 
-function HubButton({
+function HudButton({
   as = "button",
   href,
   rounded = "none",
@@ -34,7 +34,7 @@ function HubButton({
   children,
   fontFamily = "Inter",
   ...rest
-}: IHubButtonProps) {
+}: IHudButtonProps) {
   const sharedClass = clsx(
     radiusMap[rounded],
     fontFamilyType[fontFamily!],
@@ -57,4 +57,4 @@ function HubButton({
   );
 }
 
-export default HubButton;
+export default HudButton;

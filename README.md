@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Open [https://www.figma.com/design/9GgCuR1bJgaUInqvkvI7id/DRYE?node-id=179-2893&t=dzCFjKVApjz1wyYs-0](https://www.figma.com/design/9GgCuR1bJgaUInqvkvI7id/DRYE?node-id=179-2893&t=dzCFjKVApjz1wyYs-0) with your browser to see the figma design.
 
 ## Getting Started
 

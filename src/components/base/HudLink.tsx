@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import clsx from "clsx";
 
-interface HubLinkProps {
+interface HudLinkProps {
   href: string;
   children: React.ReactNode;
   target?: "_blank" | "_self";
@@ -24,7 +24,7 @@ const fontFamilyMap = {
   Grotesk: "font-grotesk",
 };
 
-function HubLink({
+function HudLink({
   href,
   children,
   target = "_self",
@@ -33,7 +33,7 @@ function HubLink({
   fontFamily = "Inter",
   className,
   underline = false,
-}: HubLinkProps) {
+}: HudLinkProps) {
   const classes = clsx(
     fontFamilyMap[fontFamily],
     sizeMap[size],
@@ -61,4 +61,4 @@ function HubLink({
   );
 }
 
-export default HubLink;
+export default HudLink;

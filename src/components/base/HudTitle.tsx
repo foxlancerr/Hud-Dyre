@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-interface IHubTitleProps {
+interface IHudTitleProps {
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   size?: "sm" | "normal" | "md" | "bold" | "lg";
   className?: string;
@@ -18,20 +18,20 @@ const sizeMap = {
 };
 
 const fontFamilyType: Record<
-  NonNullable<IHubTitleProps["fontFamily"]>,
+  NonNullable<IHudTitleProps["fontFamily"]>,
   string
 > = {
   Inter: "font-inter",
   Grotesk: "font-grotesk",
 };
 
-function HubTitle({
+function HudTitle({
   as = "h4",
   size = "normal",
   fontFamily = "Inter",
   className,
   children,
-}: IHubTitleProps) {
+}: IHudTitleProps) {
   const Component = as;
 
   return (
@@ -48,4 +48,4 @@ function HubTitle({
   );
 }
 
-export default HubTitle;
+export default HudTitle;

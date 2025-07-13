@@ -6,7 +6,7 @@ import { RiInstagramFill } from "react-icons/ri";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
-import HubText from "../base/HubText";
+import HudText from "../base/HudText";
 import { CONTAINER_MAX_WIDTH } from "@/constants";
 
 const TopHeader = () => {
@@ -26,13 +26,13 @@ const TopHeader = () => {
           height={24}
           src="/images/promotion/campaign.svg"
         ></Image>
-        <HubText size="sm" className="ml-1">
+        <HudText size="sm" className="ml-1">
           Explore the new textile collection for B2C products launch
-        </HubText>
+        </HudText>
         <Link href={"/"} className="flex gap-2 items-center">
-          <HubText className="font-semibold ml-1" size="sm">
+          <HudText className="font-semibold ml-1" size="sm">
             See now
-          </HubText>
+          </HudText>
           <span>
             <MoveRight  />
           </span>

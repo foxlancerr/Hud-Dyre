@@ -1,18 +1,18 @@
 import { CONTAINER_MAX_WIDTH, EACH_SECTION_PADDING } from "@/constants";
 import Image from "next/image";
 import React from "react";
-import HubTitle from "../base/HubTitle";
+import HudTitle from "../base/HudTitle";
 import { Button } from "@/components/ui/button";
-import HubButton from "../base/HubButton";
-import HubText from "../base/HubText";
+import HudButton from "../base/HudButton";
+import HudText from "../base/HudText";
 import { RiInstagramFill } from "react-icons/ri";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import Link from "next/link";
 import moment from "moment";
-import HubLink from "../base/HubLink";
-import HubInput from "../base/HubInput";
+import HudLink from "../base/HudLink";
+import HudInput from "../base/HudInput";
 
 const TopFooter = () => {
   return (
@@ -37,22 +37,22 @@ const TopFooter = () => {
       </div>
 
       <div className="col-span-2 flex flex-col items-start ml-6 gap-4">
-        <HubTitle
+        <HudTitle
           as="h3"
           fontFamily="Grotesk"
           size="lg"
           className="font-medium tracking-[-4px] mt-3"
         >
           Let’s start your daily home work with comfort.
-        </HubTitle>
-        <HubButton
+        </HudTitle>
+        <HudButton
           as="button"
           rounded="none"
           fontFamily="Grotesk"
           className="mt-8"
         >
           Pre-order now
-        </HubButton>
+        </HudButton>
       </div>
     </div>
   );
@@ -71,14 +71,14 @@ const BottomFooter = () => {
         className="col-span-2 flex flex-col gap-8 mr-4"
         id="footer-bottom-left"
       >
-        <HubTitle as="h4" size="md" className="font-semibold">
-          Hub
-        </HubTitle>
-        <HubText>
+        <HudTitle as="h4" size="md" className="font-semibold">
+          Hud
+        </HudTitle>
+        <HudText>
           The new innovative glove liner that protects your skin against sweat
           and itching while providing superior comfort, precision, and
           durability.
-        </HubText>
+        </HudText>
 
         <div id="socail-media" className="flex items-center gap-4 text-white">
           <Link
@@ -108,86 +108,86 @@ const BottomFooter = () => {
         </div>
       </div>
       <div>
-        <HubTitle as="h5" fontFamily="Grotesk" className="font-bold">
+        <HudTitle as="h5" fontFamily="Grotesk" className="font-bold">
           Overview
-        </HubTitle>
+        </HudTitle>
 
         <div className="flex flex-col gap-4 mt-8">
-          <HubLink as="link" size="sm" href="#">
+          <HudLink as="link" size="sm" href="#">
             About us
-          </HubLink>
-          <HubLink as="link" size="sm" href="#">
+          </HudLink>
+          <HudLink as="link" size="sm" href="#">
             Why us
-          </HubLink>
-          <HubLink as="link" size="sm" href="#">
+          </HudLink>
+          <HudLink as="link" size="sm" href="#">
             Our history
-          </HubLink>
-          <HubLink as="link" size="sm" href="#">
+          </HudLink>
+          <HudLink as="link" size="sm" href="#">
             Shop
-          </HubLink>
-          <HubLink as="link" size="sm" href="#">
+          </HudLink>
+          <HudLink as="link" size="sm" href="#">
             Features
-          </HubLink>
+          </HudLink>
         </div>
       </div>
       <div>
-        <HubTitle as="h5" fontFamily="Grotesk" className="font-bold">
+        <HudTitle as="h5" fontFamily="Grotesk" className="font-bold">
           Support
-        </HubTitle>
+        </HudTitle>
 
         <div className="flex flex-col gap-4 mt-8">
-          <HubLink as="link" size="sm" href="#">
+          <HudLink as="link" size="sm" href="#">
             Customer Support
-          </HubLink>
-          <HubLink as="link" size="sm" href="#">
+          </HudLink>
+          <HudLink as="link" size="sm" href="#">
             Contact Us
-          </HubLink>
-          <HubLink as="link" size="sm" href="#">
+          </HudLink>
+          <HudLink as="link" size="sm" href="#">
             FAQ
-          </HubLink>
-          <HubLink as="link" size="sm" href="#">
+          </HudLink>
+          <HudLink as="link" size="sm" href="#">
             Blog
-          </HubLink>
+          </HudLink>
         </div>
       </div>{" "}
       <div>
-        <HubTitle as="h5" fontFamily="Grotesk" className="font-bold">
+        <HudTitle as="h5" fontFamily="Grotesk" className="font-bold">
           Resourse
-        </HubTitle>
+        </HudTitle>
 
         <div className="flex flex-col gap-4 mt-8">
-          <HubLink as="link" size="sm" href="#">
+          <HudLink as="link" size="sm" href="#">
             Miscellaneous
-          </HubLink>
-          <HubLink as="link" size="sm" href="#">
+          </HudLink>
+          <HudLink as="link" size="sm" href="#">
             Refund policy
-          </HubLink>
-          <HubLink as="link" size="sm" href="#">
+          </HudLink>
+          <HudLink as="link" size="sm" href="#">
             Shipping policy
-          </HubLink>
+          </HudLink>
         </div>
       </div>
       <div className="col-span-2">
         <div>
-          <HubTitle as="h5" fontFamily="Grotesk" className="font-bold">
+          <HudTitle as="h5" fontFamily="Grotesk" className="font-bold">
             Subscribe
-          </HubTitle>
+          </HudTitle>
 
           <div className="flex flex-col gap-4 mt-8">
-            <HubText>
+            <HudText>
               Join the 600+ subscribers who receive bi-monthly email digests
               packed with fundraising tips, nonprofit case studies, and
               PhoneRaise updates. 
-            </HubText>
+            </HudText>
             <div className="flex flex-1 border-1 border-neutral-600/20 rounded-md justify-between py-3 px-2 relative gap-2">
-              <HubInput
+              <HudInput
                 rounded="none"
                 className="flex flex-1 px-2 hover text-black"
                 placeholder="Enter email address"
-              ></HubInput>
-              <HubButton as="button" rounded="full">
+              ></HudInput>
+              <HudButton as="button" rounded="full">
                 Subscribe
-              </HubButton>
+              </HudButton>
             </div>
           </div>
         </div>
@@ -201,8 +201,8 @@ const CopyRight = () => {
 
   return (
     <div className="flex justify-between gap-4 mt-4">
-      <HubText>© {currentYear} HUD, All rights reserved.</HubText>
-      <HubText>Privacy Policy • Terms & Conditions</HubText>
+      <HudText>© {currentYear} HUD, All rights reserved.</HudText>
+      <HudText>Privacy Policy • Terms & Conditions</HudText>
     </div>
   );
 };

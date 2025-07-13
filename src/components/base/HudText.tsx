@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx"; // optional, but useful for conditional classnames
 
-interface IHubTextProps {
+interface IHudTextProps {
   size?: "sm" | "md" | "lg";
   className?: string;
   children: React.ReactNode;
@@ -14,12 +14,12 @@ const sizeMap = {
   lg: "text-[18px] leading-[28px]",
 };
 
-function HubText({
+function HudText({
   size = "md",
   className,
   children,
   as = "p",
-}: IHubTextProps) {
+}: IHudTextProps) {
   if (as == "p") {
     return (
       <p className={clsx("font-inter", sizeMap[size], className)}>{children}</p>
@@ -31,4 +31,4 @@ function HubText({
   }
 }
 
-export default HubText;
+export default HudText;

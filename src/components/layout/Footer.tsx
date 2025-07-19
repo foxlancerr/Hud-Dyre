@@ -40,7 +40,7 @@ const TopFooter = () => {
         <HudTitle
           as="h3"
           fontFamily="Grotesk"
-          size="lg"
+          size="bold"
           className="font-medium tracking-[-4px] mt-3"
         >
           Let’s start your daily home work with comfort.
@@ -74,11 +74,11 @@ const BottomFooter = () => {
         <HudTitle as="h4" size="md" className="font-semibold">
           Hud
         </HudTitle>
-        <HudText>
-          The new innovative glove liner that protects your skin against sweat
-          and itching while providing superior comfort, precision, and
-          durability.
-        </HudText>
+      <HudText>
+        The new innovative glove liner that protects your skin against sweat
+        and itching while providing superior comfort, precision, and
+        durability.
+      </HudText>
 
         <div id="socail-media" className="flex items-center gap-4 text-white">
           <Link
@@ -108,7 +108,9 @@ const BottomFooter = () => {
         </div>
       </div>
       <div>
-        <HudTitle as="h5" fontFamily="Grotesk" className="font-bold">
+        <HudTitle as="h5" fontFamily="Grotesk"
+        size="sm"
+        className="font-bold">
           Overview
         </HudTitle>
 
@@ -131,7 +133,9 @@ const BottomFooter = () => {
         </div>
       </div>
       <div>
-        <HudTitle as="h5" fontFamily="Grotesk" className="font-bold">
+        <HudTitle as="h5" fontFamily="Grotesk" className="font-bold"
+        size="sm"
+        >
           Support
         </HudTitle>
 
@@ -151,7 +155,9 @@ const BottomFooter = () => {
         </div>
       </div>{" "}
       <div>
-        <HudTitle as="h5" fontFamily="Grotesk" className="font-bold">
+        <HudTitle as="h5" fontFamily="Grotesk" className="font-bold"
+        size="sm"
+        >
           Resourse
         </HudTitle>
 
@@ -169,7 +175,9 @@ const BottomFooter = () => {
       </div>
       <div className="col-span-2">
         <div>
-          <HudTitle as="h5" fontFamily="Grotesk" className="font-bold">
+          <HudTitle as="h5" fontFamily="Grotesk" className="font-bold"
+          size="sm"
+          >
             Subscribe
           </HudTitle>
 

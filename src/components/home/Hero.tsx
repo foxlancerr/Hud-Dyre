@@ -16,14 +16,15 @@ function HeroSection() {
         backgroundImage: "url('/images/hero/hero-bg-image.svg')",
       }}
     >
-        <div className="absolute inset-0 bg-black/30" />
+      <div className="absolute inset-0 bg-black/50" />
+
       <div
-        className="z-10 mx-auto h-[calc(100vh-50px)] flex gap-4 flex-col justify-between "
+        className="mx-auto h-[calc(100vh-50px)] flex gap-4 flex-col justify-between "
         style={{
           maxWidth: CONTAINER_MAX_WIDTH,
         }}
       >
-        <header className="flex justify-between gap-4 items-center pt-2">
+        <header className="z-3 flex justify-between gap-4 items-center pt-2">
           <HudTitle
             as="h1"
             fontFamily="Grotesk"
@@ -88,7 +89,7 @@ function HeroSection() {
             </span>
           </div>
         </header>
-        <div className="flex justify-between items-center mb-10">
+        <div className="z-3 flex justify-between items-center mb-10">
           <div className="mb-10">
             <HudTitle as="h3" size="lg" className="font-bold text-white">
               Comfort.
@@ -100,16 +101,16 @@ function HeroSection() {
               & Care.
             </HudTitle>
           </div>
-          <div className="w-[350px] gap-2 flex flex-col">
+      <div className="w-[350px] gap-4 flex flex-col">
             <HudTitle as="h6" size="sm" className="font-bold text-white">
               Protects your skin against sweat and itching
             </HudTitle>
-            <HudText>
+            <HudText className="normal">
               The new innovative glove liner that protects your skin against
               sweat and itching while providing superior comfort, precision, and
               durability.
             </HudText>
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-4 items-center">
               <HudText className="font-bold ml-1" size="md">
                 See now
               </HudText>

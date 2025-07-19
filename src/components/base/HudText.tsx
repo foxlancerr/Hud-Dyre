@@ -2,20 +2,22 @@ import React from "react";
 import clsx from "clsx"; // optional, but useful for conditional classnames
 
 interface IHudTextProps {
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "bold" | "normal";
   className?: string;
   children: React.ReactNode;
   as?: "span" | "p";
 }
 
 const sizeMap = {
-  sm: "text-[15px] leading-[15px]",
-  md: "text-[16px] leading-[24px]",
-  lg: "text-[18px] leading-[28px]",
+  sm: "text-[8px] leading-[12px]",
+  normal: "text-[12px] leading-[18px]",
+  bold: "text-[16px] leading-[24px]",
+  md: "text-[20px] leading-[28px]",
+  lg: "text-[24px] leading-[32px]",
 };
 
 function HudText({
-  size = "md",
+  size = "normal",
   className,
   children,
   as = "p",
@@ -26,7 +28,9 @@ function HudText({
     );
   } else {
     return (
-      <span className={clsx("font-inter", sizeMap[size], className)}>{children}</span>
+      <span className={clsx("font-inter", sizeMap[size], className)}>
+        {children}
+      </span>
     );
   }
 }

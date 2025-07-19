@@ -3,16 +3,18 @@ import clsx from "clsx";
 
 interface IHudTitleProps {
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-  size?: "sm" | "normal" | "md" | "bold" | "lg";
+  size?: "sm" | "normal" | "md" | "bold" | "lg" | "xsm";
   className?: string;
   fontFamily?: "Inter" | "Grotesk";
   children: React.ReactNode;
+  css?: any;
 }
 
 const sizeMap = {
+  xsm: "text-[16px] leading-[24px]",
   sm: "text-[20px] leading-[24px]",
   normal: "text-[24px] leading-[30px]",
-  md: "text-[65px] leading-[75px]",
+  md: "text-[50px] leading-[55px]",
   bold: "text-[70px] leading-[80px]",
   lg: "text-[90px] leading-[94px]",
 };
@@ -31,11 +33,13 @@ function HudTitle({
   fontFamily = "Inter",
   className,
   children,
+  css,
 }: IHudTitleProps) {
   const Component = as;
 
   return (
     <Component
+      style={css}
       className={clsx(
         sizeMap[size],
         fontFamilyType[fontFamily],

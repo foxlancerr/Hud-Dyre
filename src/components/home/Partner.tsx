@@ -1,11 +1,12 @@
+'use client'
 import React from "react";
 import HudTitle from "../base/HudTitle";
-import { CONTAINER_MAX_WIDTH, EACH_SECTION_PADDING } from "@/constants";
+
 import HudText from "../base/HudText";
 import { MoveRight } from "lucide-react";
 import Image from "next/image";
-import { HiRefresh } from "react-icons/hi";
 import clsx from "clsx";
+import { useResponsive } from "@/context/ResponsiveContext";
 
 const partnerList = [
   {
@@ -37,6 +38,7 @@ const partnerList = [
   },
 ];
 function PartnerSection() {
+  const { CONTAINER_MAX_WIDTH, EACH_SECTION_PADDING} = useResponsive()
   return (
     <section
       className="flex flex-col justify-center items-center mx-auto mb-8"
@@ -62,20 +64,23 @@ function PartnerSection() {
         {partnerList.map((item, index) => {
           return (
             <div
-            key={index}
+              key={index}
               id="hud-partner-bottom-container"
               className={clsx(
-                "flex gap-18",
+                "flex gap-18 flex-col sm:flex-row",
                 index % 2 === 0 ? "flex-row" : "flex-row-reverse"
               )}
               style={{
                 paddingBlock: EACH_SECTION_PADDING,
               }}
             >
-              <div className="flex flex-col justify-between gap-7 w-1/2">
-                <HudTitle as="h4" size="md" 
-                fontFamily="Grotesk"
-                className="tracking-tigh">
+              <div className="flex flex-col justify-between gap-7 w-full sm:w-1/2">
+                <HudTitle
+                  as="h4"
+                  size="md"
+                  fontFamily="Grotesk"
+                  className="tracking-tigh"
+                >
                   {item?.title}
                 </HudTitle>
                 <div className="flex flex-col gap-4">
@@ -93,7 +98,7 @@ function PartnerSection() {
                   </div>
                 </div>
               </div>
-              <div className="w-1/2">
+              <div className="w-full sm:w-1/2">
                 <Image
                   src={item.imageUrl}
                   height={400}

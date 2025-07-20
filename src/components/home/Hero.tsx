@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import HudTitle from "../base/HudTitle";
 import HudLink from "../base/HudLink";
@@ -6,9 +7,10 @@ import { FaRegUser } from "react-icons/fa6";
 import { FiSearch } from "react-icons/fi";
 import HudText from "../base/HudText";
 import { MoveRight } from "lucide-react";
-import { CONTAINER_MAX_WIDTH } from "@/constants";
+import { useResponsive } from "@/context/ResponsiveContext";
 
 function HeroSection() {
+  const { CONTAINER_MAX_WIDTH,EACH_SECTION_PADDING } = useResponsive();
   return (
     <div
       className=" w-100vw text-white relative"
@@ -19,12 +21,12 @@ function HeroSection() {
       <div className="absolute inset-0 bg-black/50" />
 
       <div
-        className="mx-auto h-[calc(100vh-50px)] flex gap-4 flex-col justify-between "
+        className="sm:mx-auto  h-[calc(100vh-50px)] flex gap-4 flex-col  justify-center  sm:justify-between "
         style={{
           maxWidth: CONTAINER_MAX_WIDTH,
         }}
       >
-        <header className="z-3 flex justify-between gap-4 items-center pt-2">
+        <header className="hidden sm:flex z-3 justify-between gap-4 items-center pt-2">
           <HudTitle
             as="h1"
             fontFamily="Grotesk"
@@ -89,7 +91,8 @@ function HeroSection() {
             </span>
           </div>
         </header>
-        <div className="z-3 flex justify-between items-center mb-10">
+
+        <div className="z-3 flex flex-col sm:flex-row ml-4 sm:ml-0 justify-between sm:items-center sm:mb-10">
           <div className="mb-10">
             <HudTitle as="h3" size="lg" className="font-bold text-white">
               Comfort.
@@ -101,7 +104,7 @@ function HeroSection() {
               & Care.
             </HudTitle>
           </div>
-      <div className="w-[350px] gap-4 flex flex-col">
+          <div className="w-[280px] sm:w-[350px] gap-4 flex flex-col">
             <HudTitle as="h6" size="sm" className="font-bold text-white">
               Protects your skin against sweat and itching
             </HudTitle>

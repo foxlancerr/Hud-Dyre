@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import HudTitle from "../base/HudTitle";
 import HudText from "../base/HudText";
-import { CONTAINER_MAX_WIDTH, EACH_SECTION_PADDING } from "@/constants";
 import { HiOutlineMinusSm, HiOutlinePlusSm } from "react-icons/hi";
 import { PiPlayCircleFill } from "react-icons/pi";
+import { useResponsive } from "@/context/ResponsiveContext";
 
 const FAQS = [
   {
@@ -217,6 +217,7 @@ function FaqAnswer({ answer }: FaqAnswerProps) {
 }
 
 export default function FaqsSection() {
+  const { CONTAINER_MAX_WIDTH,EACH_SECTION_PADDING } = useResponsive();
   const [activeId, setActiveId] = useState<number | null>(null);
 
   const toggleFaq = (id: number) => {

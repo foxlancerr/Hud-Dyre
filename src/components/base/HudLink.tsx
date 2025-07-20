@@ -15,10 +15,11 @@ interface HudLinkProps {
 }
 
 const sizeMap = {
-  sm: "text-[15px] leading-[15px]",
-  normal: "text-[20px] leading-[24px]",
-  md: "text-[24px] leading-[28px]",
-  lg: "text-[28px] leading-[32px]",
+  sm: "text-[12px] leading-[16px] md:text-[14px] md:leading-[18px] lg:text-[15px] lg:leading-[20px]",
+  normal:
+    "text-[14px] leading-[20px] md:text-[18px] md:leading-[24px] lg:text-[20px] lg:leading-[26px]",
+  md: "text-[16px] leading-[22px] md:text-[20px] md:leading-[26px] lg:text-[24px] lg:leading-[30px]",
+  lg: "text-[18px] leading-[24px] md:text-[24px] md:leading-[30px] lg:text-[28px] lg:leading-[36px]",
 };
 
 const fontFamilyMap = {

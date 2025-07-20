@@ -11,12 +11,13 @@ interface IHudTitleProps {
 }
 
 const sizeMap = {
-  xsm: "text-[16px] leading-[24px]",
-  sm: "text-[20px] leading-[24px]",
-  normal: "text-[24px] leading-[30px]",
-  md: "text-[50px] leading-[55px]",
-  bold: "text-[70px] leading-[80px]",
-  lg: "text-[90px] leading-[94px]",
+  xsm: "text-[14px] leading-[20px] sm:text-[16px] sm:leading-[24px] md:text-[18px] md:leading-[26px]",
+  sm: "text-[16px] leading-[22px] sm:text-[20px] sm:leading-[24px] md:text-[22px] md:leading-[26px]",
+  normal:
+    "text-[20px] leading-[26px] sm:text-[24px] sm:leading-[30px] md:text-[28px] md:leading-[36px]",
+  md: "text-[28px] leading-[32px] sm:text-[40px] sm:leading-[48px] md:text-[50px] md:leading-[55px]",
+  bold: "text-[36px] leading-[44px] sm:text-[50px] sm:leading-[60px] md:text-[70px] md:leading-[80px]",
+  lg: "text-[48px] leading-[56px] sm:text-[70px] sm:leading-[80px] md:text-[90px] md:leading-[94px]",
 };
 
 const fontFamilyType: Record<

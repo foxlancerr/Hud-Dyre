@@ -1,13 +1,14 @@
 
 
+'use client'
 import React from "react";
 import HudTitle from "../base/HudTitle";
-import { CONTAINER_MAX_WIDTH, EACH_SECTION_PADDING } from "@/constants";
 import HudText from "../base/HudText";
-import { MoveRight } from "lucide-react";
+
 import Image from "next/image";
-import { HiRefresh } from "react-icons/hi";
+
 import clsx from "clsx";
+import { useResponsive } from "@/context/ResponsiveContext";
 
 const collectionList = [
   {
@@ -40,6 +41,7 @@ const collectionList = [
   },
 ];
 function HudNewsSection() {
+  const { CONTAINER_MAX_WIDTH, EACH_SECTION_PADDING} = useResponsive()
   return (
     <section
       className="flex flex-col justify-center items-center mx-auto bg-[#E5E5E5]"

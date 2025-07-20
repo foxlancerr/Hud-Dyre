@@ -1,13 +1,12 @@
+'use client'
 import React from "react";
 import HudTitle from "../base/HudTitle";
-import { CONTAINER_MAX_WIDTH, EACH_SECTION_PADDING } from "@/constants";
-import HudText from "../base/HudText";
 
 import Image from "next/image";
-import { HiRefresh } from "react-icons/hi";
 import clsx from "clsx";
 
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
+import { useResponsive } from "@/context/ResponsiveContext";
 
 const hudNewsData = {
   hudNewTitle: "HUD updates & news",
@@ -34,6 +33,7 @@ const hudNewsData = {
   ],
 };
 function HudCollection() {
+  const {EACH_SECTION_PADDING,CONTAINER_MAX_WIDTH} = useResponsive()
   return (
     <section
       className="flex flex-col justify-center items-center mx-auto"

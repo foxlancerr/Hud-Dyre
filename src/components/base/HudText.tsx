@@ -9,11 +9,11 @@ interface IHudTextProps {
 }
 
 const sizeMap = {
-  sm: "text-[8px] leading-[12px]",
-  normal: "text-[12px] leading-[18px]",
-  bold: "text-[16px] leading-[24px]",
-  md: "text-[20px] leading-[28px]",
-  lg: "text-[24px] leading-[32px]",
+  sm: "text-[8px] leading-[14px] md:text-xs md:leading-[16px]",
+  normal: "text-xs leading-[18px] md:text-sm md:leading-[20px]",
+  bold: "text-sm font-semibold leading-[20px] md:text-base md:leading-[24px]",
+  md: "text-base leading-[22px] md:text-lg md:leading-[28px]",
+  lg: "text-lg leading-[26px] md:text-xl md:leading-[32px]",
 };
 
 function HudText({

@@ -1,12 +1,12 @@
 'use client'
 import React from "react";
 import HudTitle from "../base/HudTitle";
-
 import HudText from "../base/HudText";
 import { MoveRight } from "lucide-react";
 import Image from "next/image";
 import clsx from "clsx";
 import { useResponsive } from "@/context/ResponsiveContext";
+import { motion } from "framer-motion";
 
 const partnerList = [
   {
@@ -37,8 +37,22 @@ const partnerList = [
     imageUrl: "/images/hero/partner.svg",
   },
 ];
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      delay: i * 0.2,
+      ease: "easeOut",
+    },
+  }),
+};
+
 function PartnerSection() {
-  const { CONTAINER_MAX_WIDTH, EACH_SECTION_PADDING} = useResponsive()
+  const { CONTAINER_MAX_WIDTH, EACH_SECTION_PADDING } = useResponsive();
   return (
     <section
       className="flex flex-col justify-center items-center mx-auto mb-8"
@@ -48,7 +62,11 @@ function PartnerSection() {
         paddingTop: EACH_SECTION_PADDING,
       }}
     >
-      <div>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
+      >
         <HudTitle
           as="h6"
           size="normal"
@@ -61,56 +79,58 @@ function PartnerSection() {
           from itching and seating
         </HudTitle>
 
-        {partnerList.map((item, index) => {
-          return (
-            <div
-              key={index}
-              id="hud-partner-bottom-container"
-              className={clsx(
-                "flex gap-18 flex-col sm:flex-row",
-                index % 2 === 0 ? "flex-row" : "flex-row-reverse"
-              )}
-              style={{
-                paddingBlock: EACH_SECTION_PADDING,
-              }}
-            >
-              <div className="flex flex-col justify-between gap-7 w-full sm:w-1/2">
-                <HudTitle
-                  as="h4"
-                  size="md"
-                  fontFamily="Grotesk"
-                  className="tracking-tigh"
-                >
-                  {item?.title}
-                </HudTitle>
-                <div className="flex flex-col gap-4">
-                  <HudText as="p" size="normal" className="w-[350px]">
-                    {item?.description}
+        {partnerList.map((item, index) => (
+          <motion.div
+            key={item.id}
+            custom={index}
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.3 }}
+            id="hud-partner-bottom-container"
+            className={clsx(
+              "flex gap-18 flex-col sm:flex-row",
+              index % 2 === 0 ? "flex-row" : "flex-row-reverse"
+            )}
+            style={{
+              paddingBlock: EACH_SECTION_PADDING,
+            }}
+          >
+            <div className="flex flex-col justify-between gap-7 w-full sm:w-1/2">
+              <HudTitle
+                as="h4"
+                size="md"
+                fontFamily="Grotesk"
+                className="tracking-tigh"
+              >
+                {item?.title}
+              </HudTitle>
+              <div className="flex flex-col gap-4">
+                <HudText as="p" size="normal" className="w-[350px]">
+                  {item?.description}
+                </HudText>
+                <div className="flex gap-2 items-center">
+                  <HudText className="font-bold ml-1" size="md">
+                    {item?.hretfText}
                   </HudText>
-
-                  <div className="flex gap-2 items-center">
-                    <HudText className="font-bold ml-1" size="md">
-                      {item?.hretfText}
-                    </HudText>
-                    <span>
-                      <MoveRight />
-                    </span>
-                  </div>
+                  <span>
+                    <MoveRight />
+                  </span>
                 </div>
               </div>
-              <div className="w-full sm:w-1/2">
-                <Image
-                  src={item.imageUrl}
-                  height={400}
-                  width={568}
-                  alt="partner image 1"
-                  className="object-cover object-center"
-                ></Image>
-              </div>
             </div>
-          );
-        })}
-      </div>
+            <div className="w-full sm:w-1/2">
+              <Image
+                src={item.imageUrl}
+                height={400}
+                width={568}
+                alt="partner image"
+                className="object-cover object-center"
+              />
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
     </section>
   );
 }

@@ -1,100 +1,151 @@
-'use client'
+'use client';
+
 import React from "react";
 import HudTitle from "../base/HudTitle";
-
+import HudText from "../base/HudText";
 import Image from "next/image";
 import clsx from "clsx";
-
-import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 import { useResponsive } from "@/context/ResponsiveContext";
+import { motion } from "framer-motion";
 
-const hudNewsData = {
-  hudNewTitle: "HUD updates & news",
-  hudNewsList: [
-    {
-      id: 1,
-      title: "Gloves & sweat - a potential source of reduced quality of life",
-      href: "",
-      imageUrl: "/images/news/news2.svg",
-    },
-    {
-      id: 2,
-      title: "New liner glove revolutionizes moisture transport and fit",
-      href: "",
-      imageUrl: "/images/news/news3.svg",
-    },
-    {
-      id: 3,
-      title: "Everything you need to know about hand eczema",
+const collectionList = [
+  {
+    id: 1,
+    title: "HUD SweatGuard Liner",
+    count: "329 SEK",
+    imageUrl: "/images/hero/partner.svg",
+  },
+  {
+    id: 2,
+    title: "HUD SweatGuard Liner",
+    count: "3889 SEK",
+    imageUrl: "/images/hero/partner.svg",
+  },
+  {
+    id: 3,
+    title: "HUD SweatGuard Liner",
+    count: "6290 SEK",
+    imageUrl: "/images/hero/partner.svg",
+  },
+  {
+    id: 4,
+    title: "HUD SweatGuard Liner",
+    count: "62080 SEK",
+    imageUrl: "/images/hero/partner.svg",
+  },
+];
 
-      href: "",
-      imageUrl: "/images/news/news1.svg",
+// Animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
     },
-  ],
+  },
 };
+
+const cardVariants = {
+  hidden: { opacity: 0, scale: 0.9, y: 30 },
+  show: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+};
+
 function HudCollection() {
-  const {EACH_SECTION_PADDING,CONTAINER_MAX_WIDTH} = useResponsive()
+  const { CONTAINER_MAX_WIDTH, EACH_SECTION_PADDING } = useResponsive();
+
   return (
     <section
-      className="flex flex-col justify-center items-center mx-auto"
+      className="flex flex-col justify-center items-center mx-auto bg-[#E5E5E5] w-full"
       id="explore-collection-section"
       style={{
         paddingBlock: EACH_SECTION_PADDING,
       }}
     >
       <div
-        className="relative"
         style={{
           maxWidth: CONTAINER_MAX_WIDTH,
           paddingBlock: EACH_SECTION_PADDING,
         }}
+        className="w-full px-4 sm:px-6 lg:px-8"
       >
-        <span className="absolute top-[50%] -left-[70px]">
-          <IoArrowBack size={32}></IoArrowBack>
-        </span>
-        <span className="absolute top-[50%] -right-[70px]">
-          <IoArrowForward size={32}></IoArrowForward>
-        </span>
-
         <HudTitle
           as="h6"
-          size="md"
-          className="text-center font-bold"
+          size="normal"
+          className="text-center max-w-[90%] mx-auto font-medium"
           css={{
             paddingBottom: EACH_SECTION_PADDING,
           }}
         >
-          {hudNewsData.hudNewTitle}
+          HUD is launching a new and highly comfortable, itching and sweating
+          free fabricated products for your daily personal use.
         </HudTitle>
 
-        <div className="grid grid-cols-3 gap-8">
-          {hudNewsData?.hudNewsList?.map((item, index) => {
-            return (
-              <div className={clsx("flex flex-col w-full")}>
-                <div className="relative w-full aspect-[461/452]">
-                  <Image
-                    src={item.imageUrl}
-                    alt="hand image"
-                    fill
-                    className="object-cover object-center"
-                  />
-                </div>
-                <div className="flex flex-col mt-8">
-                  <HudTitle
-                    as="h4"
-                    size="sm"
-                    fontFamily="Grotesk"
-                    className={clsx(
-                      "tracking-tigh font-semibold text-2xl  w-[90%]"
-                    )}
-                  >
-                    {item.title}
-                  </HudTitle>
-                </div>
-              </div>
-            );
-          })}
+        <div className="flex flex-row justify-between items-center mt-8">
+          <HudTitle as="h5" size="sm">
+            Collection
+          </HudTitle>
+          <div className="flex gap-4">
+            <Image
+              src="/images/icons/arrow-left.svg"
+              height={20}
+              width={30}
+              alt="arrow left"
+              className="object-cover"
+            />
+            <Image
+              src="/images/icons/arrow-long-right.svg"
+              height={20}
+              width={100}
+              alt="arrow right"
+              className="object-cover"
+            />
+          </div>
         </div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.3 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-6"
+        >
+          {collectionList.map((item, index) => (
+            <motion.div
+              key={item.id}
+              variants={cardVariants}
+              className={clsx(
+                "border flex flex-col justify-between items-center border-black/15 rounded-md p-6 w-full shadow-md bg-white",
+                index === 1 && "bg-black text-white"
+              )}
+            >
+              <Image
+                src="/images/hero/hand.svg"
+                height={80}
+                width={160}
+                alt="hand image"
+                className="object-contain mx-auto mt-4"
+              />
+
+              <div className="flex flex-col mt-5 text-center">
+                <HudTitle
+                  as="h4"
+                  size="sm"
+                  fontFamily="Grotesk"
+                  className={clsx(
+                    "font-semibold text-2xl tracking-tight",
+                    index === 1 && "text-white"
+                  )}
+                >
+                  {item.title}
+                </HudTitle>
+                <HudText as="p" size="normal" className="mt-2">
+                  {item.count}
+                </HudText>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

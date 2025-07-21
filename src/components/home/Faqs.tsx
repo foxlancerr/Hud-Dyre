@@ -5,6 +5,7 @@ import HudText from "../base/HudText";
 import { HiOutlineMinusSm, HiOutlinePlusSm } from "react-icons/hi";
 import { PiPlayCircleFill } from "react-icons/pi";
 import { useResponsive } from "@/context/ResponsiveContext";
+import { motion, AnimatePresence } from "framer-motion";
 
 const FAQS = [
   {
@@ -183,9 +184,15 @@ type FaqAnswerProps = {
 
 function FaqAnswer({ answer }: FaqAnswerProps) {
   return (
-    <div className="grid gap-8 grid-cols-2 w-[90%] mt-8 mb-8">
+    <motion.div
+      className="grid gap-8 grid-cols-1 md:grid-cols-2 w-full mt-8 mb-8"
+      initial={{ height: 0, opacity: 0 }}
+      animate={{ height: "auto", opacity: 1 }}
+      exit={{ height: 0, opacity: 0 }}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
+    >
       <div
-        className="relative h-[350px] w-full rounded-br-[40px] bg-no-repeat bg-contain bg-center flex justify-end p-8"
+        className="relative h-[300px] md:h-[350px] w-full rounded-br-[40px] bg-no-repeat bg-contain bg-center flex justify-end p-6 md:p-8"
         style={{ background: `url('${answer.imageUrl}')` }}
       >
         <div className="flex flex-col gap-4 justify-between">
@@ -193,36 +200,37 @@ function FaqAnswer({ answer }: FaqAnswerProps) {
             {answer.title}
           </HudTitle>
           <span className="cursor-pointer ml-auto text-white">
-            <PiPlayCircleFill size={50} />
+            <PiPlayCircleFill size={44} />
           </span>
         </div>
       </div>
 
-      <div className="flex gap-3 flex-col text-inherit">
-        <HudTitle size="xsm" className="text-inherit font-normal">
+      <div className="flex gap-3 flex-col text-inherit px-2 md:px-0">
+        <HudTitle size="xsm" className="text-inherit font-normal text-lg md:text-xl">
           {answer.content[0]}
         </HudTitle>
         {answer.content.slice(1).map((para, index) => (
           <HudText
             key={index}
             size="normal"
-            className="text-xl font-normal text-gray-600"
+            className="text-base md:text-xl font-normal text-gray-400"
           >
             {para}
           </HudText>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 export default function FaqsSection() {
-  const { CONTAINER_MAX_WIDTH,EACH_SECTION_PADDING } = useResponsive();
+  const { CONTAINER_MAX_WIDTH, EACH_SECTION_PADDING } = useResponsive();
   const [activeId, setActiveId] = useState<number | null>(null);
 
   const toggleFaq = (id: number) => {
     setActiveId((prevId) => (prevId === id ? null : id));
   };
+
   return (
     <section
       className="flex flex-col w-full bg-black text-white justify-center mx-auto"
@@ -233,7 +241,6 @@ export default function FaqsSection() {
     >
       <div
         className="flex flex-col justify-center mx-auto w-full text-inherit"
-        id="testimonail-section"
         style={{
           maxWidth: CONTAINER_MAX_WIDTH,
           paddingBlock: EACH_SECTION_PADDING,
@@ -254,7 +261,7 @@ export default function FaqsSection() {
         {FAQS.map((item) => (
           <div key={item.id} className="w-full">
             <div
-              className="flex justify-between gap-4 mt-4 pt-4 border-t-1 border-gray-600 cursor-pointer"
+              className="flex justify-between gap-4 mt-4 pt-4 border-t border-gray-600 cursor-pointer"
               onClick={() => toggleFaq(item.id)}
             >
               <HudTitle
@@ -267,20 +274,18 @@ export default function FaqsSection() {
 
               <span className="cursor-pointer">
                 {activeId === item.id ? (
-                  <HiOutlineMinusSm
-                    size={32}
-                    onClick={() => toggleFaq(item.id)}
-                  />
+                  <HiOutlineMinusSm size={32} />
                 ) : (
-                  <HiOutlinePlusSm
-                    size={32}
-                    onClick={() => toggleFaq(item.id)}
-                  />
+                  <HiOutlinePlusSm size={32} />
                 )}
               </span>
             </div>
 
-            {activeId === item.id && <FaqAnswer answer={item.answer} />}
+            <AnimatePresence mode="wait" initial={false}>
+              {activeId === item.id && (
+                <FaqAnswer key={item.id} answer={item.answer} />
+              )}
+            </AnimatePresence>
           </div>
         ))}
       </div>

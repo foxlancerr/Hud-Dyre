@@ -1,65 +1,168 @@
-import { MoveRight } from "lucide-react";
-import Image from "next/image";
+"use client";
+import { useEffect, useState } from "react";
+import { RiMenu2Line } from "react-icons/ri";
+import HudTitle from "../base/HudTitle";
+import { AnimatePresence } from "framer-motion";
+
+import { motion } from "framer-motion";
 import Link from "next/link";
-import React from "react";
+import Image from "next/image";
+import { MoveRight } from "lucide-react";
 import { RiInstagramFill } from "react-icons/ri";
-import { FaLinkedinIn } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa";
-import { FaFacebookF } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaLinkedinIn,
+  FaRegUser,
+  FaYoutube,
+} from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
+import { FiSearch } from "react-icons/fi";
 import HudText from "../base/HudText";
-import { CONTAINER_MAX_WIDTH } from "@/constants";
+import HudLink from "../base/HudLink";
+
+import { useScreenSize } from "@/hooks/useScreenSize";
+import { useMenu } from "@/context/MenuContext";
+import { useResponsive } from "@/context/ResponsiveContext";
 
 const TopHeader = () => {
+  const { handleMenuToggle } = useMenu();
+  const { CONTAINER_MAX_WIDTH, EACH_SECTION_PADDING } = useResponsive();
   return (
-    <div
-      className="flex justify-between text-white
-    container  mx-auto h-[50px]
-    "
-      style={{
-        maxWidth: CONTAINER_MAX_WIDTH,
-      }}
+    <motion.div
+      key="top-header"
+      initial={{ opacity: 0, y: -30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -30 }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+      className="flex-col sm:flex-row items-center flex text-white
+        container mx-auto h-screen sm:h-[50px] p-[20px] sm:p-0 sm:justify-between sm:items-center 
+        relative
+      "
+      style={{ maxWidth: CONTAINER_MAX_WIDTH }}
     >
-      <div className="flex items-center gap-2">
-        <Image
-          alt="promotion icon"
-          width={24}
-          height={24}
-          src="/images/promotion/campaign.svg"
-        ></Image>
-        <HudText size="sm" className="ml-1">
-          Explore the new textile collection for B2C products launch
-        </HudText>
-        <Link href={"/"} className="flex gap-2 items-center">
-          <HudText className="font-semibold ml-1" size="sm">
-            See now
-          </HudText>
-          <span>
-            <MoveRight  />
-          </span>
+      {/* Promo Text */}
+      <div className="flex flex-col sm:flex-row gap-2 pb-2 border-b-1 sm:border-none sm:pb-0 border-gray-600/50 ">
+        <div className="flex items-start sm:items-center justify-between gap-4">
+          <Image
+            alt="promotion icon"
+            width={24}
+            height={24}
+            src="/images/promotion/campaign.svg"
+          />
+          <div className="flex flex-col gap-1 sm:flex-row items-start sm:items-center">
+            <HudText size="normal" className="ml-1">
+              Explore the new textile collection for B2C products launch
+            </HudText>
+            <Link href="/" className="flex gap-2 items-center">
+              <HudText className="font-semibold ml-1" size="normal">
+                See now
+              </HudText>
+              <MoveRight />
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <header className="sm:hidden z-3 flex flex-col gap-2 items-start w-full mt-4">
+        <div className="flex justify-between items-center w-full">
+          <HudTitle
+            as="h1"
+            fontFamily="Grotesk"
+            size="md"
+            className="font-bold text-white"
+          >
+            hud
+          </HudTitle>
+          <div className="flex gap-2">
+            <FiSearch className="size-5 sm:size-6" />
+            <FaRegUser className="size-5 sm:size-6" />
+          </div>
+        </div>
+        <div className="flex flex-col gap-1 items-center h-full justify-center w-full">
+          {["About us", "Why us", "Features", "Shop", "B2B"].map((item) => (
+            <HudLink
+              key={item}
+              href="#"
+              className="text-white"
+              as="link"
+              size="normal"
+              display="inline"
+            >
+              {item}
+            </HudLink>
+          ))}
+        </div>
+      </header>
+
+      {/* Social Icons */}
+      <div
+        id="social-media"
+        className="flex items-center justify-center gap-4 sm:gap-8 mt-auto sm:mt-0"
+      >
+        <Link href="/">
+          <RiInstagramFill className="size-5 sm:size-6" />
+        </Link>
+        <Link href="/">
+          <FaLinkedinIn className="size-5 sm:size-6" />
+        </Link>
+        <Link href="/">
+          <FaYoutube className="size-5 sm:size-6" />
+        </Link>
+        <Link href="/">
+          <FaFacebookF className="size-5 sm:size-6" />
         </Link>
       </div>
-      <div id="socail-media" className="flex items-center gap-8">
-        <Link href={"/"}>
-          <RiInstagramFill size={24}></RiInstagramFill>
-        </Link>
-        <Link href={"/"}>
-          <FaLinkedinIn size={24}></FaLinkedinIn>
-        </Link>
-        <Link href={"/"}>
-          <FaYoutube size={24}></FaYoutube>
-        </Link>
-        <Link href={"/"}>
-          <FaFacebookF size={24}></FaFacebookF>
-        </Link>
-      </div>
-    </div>
+    </motion.div>
   );
 };
 
 function Header() {
+  const { isMobile } = useScreenSize();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    // Cleanup just in case
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
   return (
     <header id="header" className="bg-black w-full mx-auto">
-      <TopHeader></TopHeader>
+      {/* Mobile navbar top row */}
+      <div className="flex justify-between items-center w-full p-4 sm:hidden">
+        <HudTitle
+          as="h1"
+          fontFamily="Grotesk"
+          size="md"
+          className="font-bold text-white"
+        >
+          hud
+        </HudTitle>
+        <div className="text-white" onClick={handleMenuToggle}>
+          {isMenuOpen ? (
+            <IoClose className="size-5 sm:size-6" />
+          ) : (
+            <RiMenu2Line className="size-5 sm:size-6" />
+          )}
+        </div>
+      </div>
+
+      {/* AnimatePresence with conditional render */}
+
+      <AnimatePresence mode="wait">
+        {isMenuOpen || !isMobile ? <TopHeader key="animated-header" /> : null}
+      </AnimatePresence>
     </header>
   );
 }
